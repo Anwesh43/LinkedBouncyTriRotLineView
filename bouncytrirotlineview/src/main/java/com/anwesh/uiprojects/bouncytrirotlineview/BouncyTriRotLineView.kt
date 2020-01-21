@@ -31,7 +31,7 @@ fun Canvas.drawTriRotLine(i : Int, scale : Float, size : Float, paint : Paint) {
     val sf : Float = scale.sinify().divideScale(i, lines)
     val sj : Float = 1f - 2 * i
     save()
-    translate(-size, 0f)
+    translate(-size * sj, 0f)
     rotate(-deg * sf * sj)
     drawLine(0f, 0f, 2 * size * sj, 0f, paint)
     restore()
@@ -53,6 +53,7 @@ fun Canvas.drawBTRLNode(i : Int, scale : Float, paint : Paint) {
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     save()
     translate(gap * (i + 1), h / 2)
+    drawLine(-size, 0f, size, 0f, paint)
     drawTriRotLines(scale, size, paint)
     restore()
 }
